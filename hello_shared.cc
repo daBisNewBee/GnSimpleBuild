@@ -5,5 +5,9 @@
 #include "hello_shared.h"
 
 const char* GetSharedText() {
-  return "world";
+#if ENABLE_DOOM_MELON
+  return "enable_doom_melon";
+#else
+  return "disable_doom_melon";
+#endif
 }

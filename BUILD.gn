@@ -2,6 +2,25 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
+# 官方项目地址：https://gn.googlesource.com/gn/+/HEAD/examples/simple_build
+# GN Quick Start guide： https://gn.googlesource.com/gn/+/HEAD/docs/quick_start.md#Running-GN
+# GN Reference： https://gn.googlesource.com/gn/+/master/docs/reference.md#targets
+
+
+group("tools") {
+  deps = [
+     # This will expand to the name "//tutorial:tutorial" which is the full name
+    # of our new target. Run "gn help labels" for more.
+    "//tutorial",
+  ]
+}
+
+# gn help buildargs
+declare_args() {
+  enable_teleporter = true
+  enable_doom_melon = false
+}
+
 executable("hello") {
   sources = [ "hello.cc" ]
 
@@ -9,6 +28,16 @@ executable("hello") {
     ":hello_shared",
     ":hello_static",
   ]
+
+  # Remove global default.
+  # configs -= ["//build:no_exceptions"]
+  # Replace with a different one.
+  # configs += ["//build:exceptions"]
+
+  # "gn gen out" 可以打印“Default configs” ： 
+  # ["//build:compiler_defaults", "//build:executable_ldconfig"]
+  # print(configs)
+  print("This configs for the target $target_name are $configs")
 }
 
 shared_library("hello_shared") {
@@ -17,7 +46,23 @@ shared_library("hello_shared") {
     "hello_shared.h",
   ]
 
-  defines = [ "HELLO_SHARED_IMPLEMENTATION" ]
+  defines = [
+    "HELLO_SHARED_IMPLEMENTATION",
+    # "ENABLE_DOOM_MELON=0",
+  ]
+
+#  引用配置"config(xxx)"
+  configs += [
+    ":my_lib_config",
+  ]
+  
+  print("shared lib: $configs")
+}
+
+# 这里可以专门放配置,ex,compiler flags, defines, and include directories
+config("my_lib_config") {
+  defines = [ "ENABLE_DOOM_MELON" ]
+  include_dirs = [ "//third_party/something" ]
 }
 
 static_library("hello_static") {
@@ -25,4 +70,10 @@ static_library("hello_static") {
     "hello_static.cc",
     "hello_static.h",
   ]
+
+  public_configs = [
+    ":my_lib_config",
+  ]
+  
+  print("static lib: $configs")
 }

@@ -5,6 +5,6 @@
 #include <stdio.h>
 
 int main(int argc, char* argv[]) {
-  printf("Hello from the tutorial.\n");
+  printf("Hello my little ZhuanZhuan.\n");
   return 0;
 }
