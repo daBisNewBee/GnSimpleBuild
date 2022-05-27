@@ -12,6 +12,7 @@ group("tools") {
      # This will expand to the name "//tutorial:tutorial" which is the full name
     # of our new target. Run "gn help labels" for more.
     "//tutorial",
+    "//basic",
   ]
 }
 
