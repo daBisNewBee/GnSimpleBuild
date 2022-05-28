@@ -3,8 +3,12 @@
 // found in the LICENSE file.
 
 #include <iostream>
+#include "construct.h"
 
 using namespace std;
+
+namespace edge_basic{
+
 
 class A
 {
@@ -26,6 +30,8 @@ public:
 
   virtual ~A() {}
 };
+
+}
 
 class MyString : public string {
   
@@ -62,7 +68,10 @@ MyString&& hello_x(MyString&& str) {
   return move(str);
 }
 
+
 void moveTest() {
+  using namespace edge_basic;
+
   A a; // 换成 “const A a;”后，std::move 会触发拷贝构造函数，不走移动构造函数
   A b = a;
   // C++11中std::move强制将实参转换成"右值引用"的模板函数
@@ -85,7 +94,7 @@ void moveTest() {
 
 int main(int argc, char *argv[])
 {
-  moveTest();
-
+  // moveTest();
+  edge_cons_entrance();
   return 0;
 }
