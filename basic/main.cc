@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include "construct.h"
+#include "template.h"
 
 using namespace std;
 
@@ -95,6 +96,7 @@ void moveTest() {
 int main(int argc, char *argv[])
 {
   // moveTest();
-  edge_cons_entrance();
+  // edge_cons_entrance();
+  edge_temlpate_entrance();
   return 0;
 }

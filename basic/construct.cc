@@ -174,7 +174,7 @@ void edge_cons_entrance() {
     A a; // 默认构造函数
 
     cout << "2. A a0()" << endl;
-    A a0(); // 没有创建对象
+    A a0(); // 没有创建对象!!易错！表示声明一个返回值为A类型的函数而已！
 
     cout << endl;
 

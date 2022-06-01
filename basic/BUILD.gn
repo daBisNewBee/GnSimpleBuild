@@ -1,6 +1,7 @@
 executable("basic") {
   sources = [
     "main.cc",
-    "construct.cc"
+    "construct.cc",
+    "template.cc",
   ]
 }
