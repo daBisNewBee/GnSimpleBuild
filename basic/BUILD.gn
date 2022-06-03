@@ -4,4 +4,10 @@ executable("basic") {
     "construct.cc",
     "template.cc",
   ]
+  # TODO: 无法指定cpp standard
+  #   ERROR at //BUILD.gn:67:3: Undefined identifier.
+  #   cflags += ["-std=c++11"]
+  #   ^-----
+  #   FAILED: build.ninja
+  # cflags_cc += ["-std=c++11"]
 }

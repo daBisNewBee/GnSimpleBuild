@@ -124,6 +124,82 @@ constexpr T pi = T(3.1415926535897932385); // 有点像lamda？
 
 #include <iomanip>
 
+#include <time.h>
+
+constexpr int add1(int x, int y)
+{
+    return x + y;
+}
+
+int add2(int x, int y)
+{
+    return x + y;
+}
+
+void printCppVersion() {
+    cout << "__cplusplus = " << __cplusplus << endl;
+    switch (__cplusplus)
+    {
+    case 199711L:
+        std::cout << "C++98\n";
+        break;
+    case 201103L:
+        std::cout << "C++11\n";
+        break;
+    case 201402L:
+        std::cout << "C++14\n"; // right
+        break;
+    case 201703L:
+        std::cout << "C++17\n"; 
+    default:
+        std::cout << "pre-standard C++\n";
+        break;
+    }
+}
+
+/**
+ * @brief TODO: “constexpr”实际没卵用？区别不大
+ * use constexpr func. cost = 0.173
+   use normal func. cost = 0.18
+ */
+void constExprTest() {
+
+    /**
+     * @brief constexpr指针所指变量必须是全局变量或者static变量(既存储在静态数据区的变量)
+     * 
+     */
+    static int bufSize = 512;
+    int j = 100;
+
+    cout << "bufSize = " << bufSize << endl;
+
+    // const int *cp = NULL;
+    // cp = &j;
+    // cout << "const int *cp = " << *cp << endl;
+    constexpr int *p = &bufSize; // 或者 *p = &gFlag
+    *p = 1024;
+
+    cout << "bufSize = " << bufSize << endl;
+
+    clock_t start, end;
+    start = clock();
+    for (size_t i = 0; i < 10000 * 10000; i++)
+    {
+        constexpr int ret = add1(100,200);
+    }
+    end = clock();
+    cout << "use constexpr func. cost = " << (double)(end-start)/CLOCKS_PER_SEC << endl;;
+    
+    start = clock();
+    for (size_t i = 0; i < 10000 * 10000; i++)
+    {
+        int ret = add2(100,200);
+    }
+    end = clock();
+    cout << "use normal func. cost = " << (double)(end-start)/CLOCKS_PER_SEC << endl;
+}
+
+int gFlag = 100;
 
 void edge_temlpate_entrance() {
     int a = 2, b = 3;
@@ -149,6 +225,7 @@ void edge_temlpate_entrance() {
     cout << pi_fn<int>() << pi<int> << endl;
     cout << setprecision(10) << pi<float> << endl;
     cout << setprecision(10) << pi<double> << endl;
+
+    constExprTest();
+    printCppVersion();
 }
-
-
