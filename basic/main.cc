@@ -99,6 +99,7 @@ int main(int argc, char *argv[])
   // moveTest();
   // edge_cons_entrance();
   // edge_temlpate_entrance();
-  emplaceTest();
+  // emplaceTest();
+  operatorTest();
   return 0;
 }

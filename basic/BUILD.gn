@@ -4,5 +4,6 @@ executable("basic") {
     "construct.cc",
     "template.cc",
     "emplace.cc",
+    "operator.cc",
   ]
 }
