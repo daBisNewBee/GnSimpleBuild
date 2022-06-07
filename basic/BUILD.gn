@@ -3,5 +3,6 @@ executable("basic") {
     "main.cc",
     "construct.cc",
     "template.cc",
+    "emplace.cc",
   ]
 }

@@ -5,6 +5,7 @@
 #include <iostream>
 #include "construct.h"
 #include "template.h"
+#include "utils.h"
 
 using namespace std;
 
@@ -97,6 +98,7 @@ int main(int argc, char *argv[])
 {
   // moveTest();
   // edge_cons_entrance();
-  edge_temlpate_entrance();
+  // edge_temlpate_entrance();
+  emplaceTest();
   return 0;
 }
