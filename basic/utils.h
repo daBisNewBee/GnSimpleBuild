@@ -1,0 +1,2 @@
+void emplaceTest();
+void operatorTest();

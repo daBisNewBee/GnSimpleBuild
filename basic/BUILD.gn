@@ -3,6 +3,8 @@ executable("basic") {
     "main.cc",
     "construct.cc",
     "template.cc",
+    "emplace.cc",
+    "operator.cc",
   ]
   # TODO: 无法指定cpp standard
   #   ERROR at //BUILD.gn:67:3: Undefined identifier.
