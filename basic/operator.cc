@@ -32,6 +32,14 @@ public:
         cout << "x = " << this->x << ", y = " << this->y;
     }
 
+    void func(int data)
+    {
+        cout << "func. data = " << data << endl;
+    }
+
+    // 防止隐式转换;防止指定函数被调用
+    void func(double data)=delete;
+
     // 符号重载语法: 返回值类型 operator 符号(参数列表);
     Complex operator+(Complex c)
     {
@@ -59,13 +67,17 @@ ostream& operator <<(ostream& out, Complex& c)
 }
 
 void operatorTest(){
-    Complex a,b;
-    cin >> a >> b;
-    Complex c = a + b;
-    cout << c << endl;
+    // Complex a,b;
+    // cin >> a >> b;
+    // Complex c = a + b;
+    // cout << c << endl;
 
-    // Complex c1(1,3), c2(3,4);
-    // Complex c3 = c1 + c2;
-    // c3.print();
-    // cout << "operator() result = " << c3(10,20);
+    Complex c1(1,3), c2(3,4);
+    Complex c3 = c1 + c2;
+    c3.print();
+    cout << "operator() result = " << c3(10,20) << endl;
+
+    c3.func(100);
+    // "error: use of deleted function 'void Complex::func(double)'"
+    // c3.func(100.0);
 }
