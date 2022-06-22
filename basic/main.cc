@@ -100,6 +100,7 @@ int main(int argc, char *argv[])
   // edge_cons_entrance();
   // edge_temlpate_entrance();
   // emplaceTest();
-  operatorTest();
+  // operatorTest();
+  zhiNengPtrTest();
   return 0;
 }

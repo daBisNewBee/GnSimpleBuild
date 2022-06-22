@@ -5,6 +5,7 @@ executable("basic") {
     "template.cc",
     "emplace.cc",
     "operator.cc",
+    "zhineng.cc"
   ]
   # TODO: 无法指定cpp standard
   #   ERROR at //BUILD.gn:67:3: Undefined identifier.
