@@ -47,6 +47,7 @@
         "template h": "cpp",
         "iomanip": "cpp",
         "ctime": "cpp",
-        "set": "cpp"
+        "set": "cpp",
+        "cassert": "cpp"
     }
 }
