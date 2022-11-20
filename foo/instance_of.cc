@@ -73,6 +73,9 @@ public:
  * 
  * “C/C++编程：trivial和non-trivial”：
  * https://blog.csdn.net/zhizhengguan/article/details/115269399
+ * 
+ * default 的实际影响？使方法称为trivial类型：
+ * https://blog.csdn.net/qq_37026934/article/details/124362476
  */
 class A
 {
