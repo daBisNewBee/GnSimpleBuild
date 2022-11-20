@@ -43,6 +43,7 @@ class Vec3
 {
 public:
     int x, y, z;
+    // Vec3() = default; //  default 函数： 编译器将为显式声明的default函数自动生成函数体
     Vec3():x(0),y(0),z(0) {
         cout << "Vec3()\n";
     }
